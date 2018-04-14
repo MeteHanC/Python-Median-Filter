@@ -5,6 +5,8 @@ from PIL import Image
 def median_filter(data, filter_size):
     temp = []
     indexer = filter_size // 2
+    data_final = []
+    data_final = numpy.zeros((len(data),len(data[0])))
     for i in range(len(data)):
 
         for j in range(len(data[0])):
@@ -21,9 +23,9 @@ def median_filter(data, filter_size):
                             temp.append(data[i + z - indexer][j + k - indexer])
 
             temp.sort()
-            data[i][j] = temp[len(temp) // 2]
+            data_final[i][j] = temp[len(temp) // 2]
             temp = []
-    return data
+    return data_final
 
 
 def main():
